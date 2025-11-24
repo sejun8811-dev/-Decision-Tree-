@@ -3,27 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>나의 웹사이트</title>
-        <style>
+    <title>결정 트리(Decision Tree) 완벽 정리</title>
+    <style>
+        /* A4 용지 느낌의 레이아웃 및 디자인 설정 */
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #f0f4f8;
+            --text-color: #333;
+        }
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            background-color: #e9ecef;
+        }
+        .container {
+            /* A4 너비와 유사하게 설정 (약 21cm) */
+            max-width: 800px; 
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
         }
         h1 {
-            color: blue;
+            color: var(--primary-color);
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: var(--primary-color);
+            margin-top: 25px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 10px;
+        }
+        p { margin-bottom: 15px; }
+        ul { margin-bottom: 20px; padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        strong { color: #000; font-weight: 600; }
+
+        /* 간단한 트리 다이어그램 스타일 */
+        .tree-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+        }
+        .node {
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            text-align: center;
+            position: relative;
+        }
+        .root-node { background-color: #d1e7dd; border: 2px solid #0f5132; color: #0f5132; }
+        .internal-node { background-color: #fff3cd; border: 2px solid #856404; color: #856404; margin-top: 20px; }
+        .leaf-node { background-color: #cfe2ff; border: 2px solid #084298; color: #084298; margin-top: 20px; display: inline-block; margin-right: 10px; }
+        .arrow { font-size: 20px; color: #666; margin: 5px 0; }
+        .branches { display: flex; justify-content: space-around; width: 80%; }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #666;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
         }
     </style>
-      <link rel="stylesheet" href="style.css">
-    <!-- 여기에 CSS 연결 및 스타일을 추가할 수 있습니다 -->
 </head>
-<body>   
-     <h1>안녕하세요!</h1>
-    <p>이것은 나의 첫 번째 웹 페이지입니다.</p>
-    <button id="myButton">클릭하세요</button>
-    <script src="script.js"></script>
-    <!-- 여기에 웹 페이지 콘텐츠를 넣습니다 -->
-    <h1>안녕하세요!</h1>
-    <p>예제</p>
-    
+<body>
+    <div class="container">
+        <header>
+            <h1>머신러닝의 기초: 결정 트리 (Decision Tree)</h1>
+        </header>
+
+        <main>
+            <section>
+                <h2>1. 결정 트리란 무엇인가?</h2>
+                <p>
+                    결정 트리(Decision Tree)는 복잡한 데이터를 분류하거나 예측하기 위해 사용하는 가장 직관적인 머신러닝 모델 중 하나입니다. 마치 어릴 적 즐겨 하던 <strong>'스무고개 게임'</strong>과 원리가 같습니다. 데이터를 분석하여 예/아니오로 대답할 수 있는 질문들을 만들어내고, 이 질문들을 따라가며 최종적인 답(예측)을 내리는 구조입니다.
+                </p>
+            </section>
+
+            <section>
+                <h2>2. 작동 원리와 구조</h2>
+                <p>
+                    결정 트리는 데이터를 가장 잘 나눌 수 있는 질문을 찾아 가지를 쳐 나갑니다. 이때 '얼마나 데이터가 잘 섞여 있는가'를 나타내는 <strong>불순도(Impurity)</strong>를 낮추는 방향으로 학습합니다. (지니 계수나 엔트로피를 사용합니다.)
+                </p>
+                
+                <div class="tree-diagram">
+                    <div class="node root-node">시작: 날개가 있는가? (Root Node)</div>
+                    <div class="branches">
+                        <div style="text-align: center;">
+                            <div class="arrow">↙ (Yes)</div>
+                            <div class="node internal-node">알을 낳는가? (Internal Node)</div>
+                            <div class="arrow">↓ (Yes)</div>
+                            <div class="node leaf-node">결과: 조류 (Leaf Node)</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div class="arrow">(No) ↘</div>
+                            <div class="node internal-node">다리가 4개인가? (Internal Node)</div>
+                            <div class="arrow">↓ (Yes)</div>
+                            <div class="node leaf-node">결과: 포유류 (Leaf Node)</div>
+                        </div>
+                    </div>
+                </div>
+                <ul>
+                    <li><strong>루트 노드(Root Node):</strong> 트리의 시작점. 첫 번째 질문이 던져지는 곳입니다.</li>
+                    <li><strong>내부 노드(Internal Node):</strong> 중간 분기점. 추가적인 조건(질문)이 있는 곳입니다.</li>
+                    <li><strong>리프 노드(Leaf Node):</strong> 트리의 끝부분. 최종 결정이나 예측 값이 내려지는 곳입니다.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>3. 장점과 단점</h2>
+                <p>모든 모델이 그렇듯, 결정 트리도 명확한 장단점이 있습니다.</p>
+                <ul>
+                    <li><strong>장점 (Pros):</strong>
+                        <ul>
+                            <li>구조가 단순하여 모델이 왜 그런 결정을 내렸는지 <strong>이해하고 설명하기 쉽습니다.</strong> (화이트박스 모델)</li>
+                            <li>데이터 전처리(정규화 등)가 거의 필요 없습니다.</li>
+                        </ul>
+                    </li>
+                    <li><strong>단점 (Cons):</strong>
+                        <ul>
+                            <li>학습 데이터에 너무 익숙해져 새로운 데이터에 대한 예측력이 떨어지는 <strong>과적합(Overfitting)</strong>이 발생하기 쉽습니다.</li>
+                            <li>데이터가 조금만 바뀌어도 트리의 구조가 크게 달라질 수 있어 불안정합니다.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>4. 결론</h2>
+                <p>
+                    결정 트리는 그 자체로도 유용하지만, 과적합이라는 단점을 극복하기 위해 여러 개의 트리를 합쳐서 사용하는 <strong>랜덤 포레스트(Random Forest)</strong>나 <strong>부스팅(Boosting)</strong> 같은 더 강력한 모델의 기본 구성 요소로 널리 사용됩니다. 머신러닝을 이해하기 위한 가장 중요한 첫걸음입니다.
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <p>Copyright © 2024. 데이터 과학 꿈나무의 블로그. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>
