@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
+
 <body>
 
     <header>
@@ -33,10 +35,11 @@
         </nav>
 
         <main class="content">
-            
+
             <section id="sec1">
                 <h2>1. 의사결정 나무(Decision Tree)란?</h2>
-                <p>의사결정 나무는 데이터를 분석하여 이들 사이에 존재하는 패턴을 예측 가능한 규칙들의 조합으로 나타내는 머신러닝 알고리즘입니다. 마치 스무고개 놀이처럼 "예/아니오" 질문을 반복하며 정답을 찾아가는 구조를 가집니다.</p>
+                <p>의사결정 나무는 데이터를 분석하여 이들 사이에 존재하는 패턴을 예측 가능한 규칙들의 조합으로 나타내는 머신러닝 알고리즘입니다. 마치 스무고개 놀이처럼 "예/아니오" 질문을 반복하며
+                    정답을 찾아가는 구조를 가집니다.</p>
                 <p>분류(Classification)와 회귀(Regression) 문제 모두에 사용할 수 있는 지도 학습 모델입니다.</p>
             </section>
 
@@ -46,30 +49,35 @@
                 <ul>
                     <li><strong>1966년 (CLS):</strong> Earl B. Hunt 등이 Concept Learning System을 개발하여 기초를 마련했습니다.</li>
                     <li><strong>1979년 (ID3):</strong> Ross Quinlan이 엔트로피 기반의 ID3 알고리즘을 발표하며 널리 알려졌습니다.</li>
-                    <li><strong>1984년 (CART):</strong> Leo Breiman 등이 Classification and Regression Tree를 발표하여 지니 계수를 도입했습니다.</li>
+                    <li><strong>1984년 (CART):</strong> Leo Breiman 등이 Classification and Regression Tree를 발표하여 지니 계수를
+                        도입했습니다.</li>
                     <li><strong>1993년 (C4.5):</strong> Ross Quinlan이 ID3를 개선하여 연속형 데이터 처리를 가능하게 했습니다.</li>
                 </ul>
             </section>
 
-            <section id="sec3">    
+            <section id="sec3">
                 <h2>3. 기본 구조 (Structure)</h2>
                 <p>나무가 뒤집혀 있는 모양으로, 뿌리(Root)에서 시작해 잎(Leaf)으로 끝납니다. 각 부분의 역할은 다음과 같습니다.</p>
 
                 <figure class="diagram-container">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Decision_Tree.jpg/640px-Decision_Tree.jpg" alt="의사결정 나무의 기본 구조: 루트 노드, 내부 노드, 리프 노드">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Decision_Tree.jpg/640px-Decision_Tree.jpg"
+                        alt="의사결정 나무의 기본 구조: 루트 노드, 내부 노드, 리프 노드">
                     <figcaption>그림 1: 의사결정 나무의 기본 구조 (출처: Wikimedia Commons)</figcaption>
                 </figure>
-                
+
                 <ul>
                     <li><strong>뿌리 노드 (Root Node):</strong> 트리의 시작점입니다. 가장 첫 번째 질문이 위치하며, 입력된 모든 데이터를 포함하고 있습니다.</li>
-                    <li><strong>내부 노드 (Internal Node):</strong> 조건에 따라 데이터가 분기(Split)되는 지점입니다. '스무고개'의 질문에 해당하며, 각 분기점마다 특정 기준(특성)에 따라 데이터가 나뉩니다.</li>
-                    <li><strong>잎 노드 (Leaf Node):</strong> 더 이상 분할되지 않는 트리의 끝점입니다. 최종적인 예측값(클래스 레이블 또는 회귀 값)을 결정하는 곳입니다.</li>
+                    <li><strong>내부 노드 (Internal Node):</strong> 조건에 따라 데이터가 분기(Split)되는 지점입니다. '스무고개'의 질문에 해당하며, 각 분기점마다
+                        특정 기준(특성)에 따라 데이터가 나뉩니다.</li>
+                    <li><strong>잎 노드 (Leaf Node):</strong> 더 이상 분할되지 않는 트리의 끝점입니다. 최종적인 예측값(클래스 레이블 또는 회귀 값)을 결정하는 곳입니다.
+                    </li>
                 </ul>
             </section>
 
             <section id="sec4">
                 <h2>4. 핵심 개념: 불순도 (Impurity)</h2>
-                <p>트리를 나눌 때 가장 중요한 기준은 "어떻게 나누어야 데이터를 가장 잘 구분할 수 있는가?"입니다. 이때 <strong>불순도(Impurity)</strong>가 낮아지는 방향으로 데이터를 분할합니다.</p>
+                <p>트리를 나눌 때 가장 중요한 기준은 "어떻게 나누어야 데이터를 가장 잘 구분할 수 있는가?"입니다. 이때 <strong>불순도(Impurity)</strong>가 낮아지는 방향으로
+                    데이터를 분할합니다.</p>
                 <blockquote>
                     불순도가 낮다 = 데이터가 균일하게 섞여 있다 (순수하다).<br>
                     불순도가 높다 = 여러 클래스가 마구 섞여 있다.
@@ -89,7 +97,7 @@
                 <h2>6. 수학 공식 2: 지니 계수 (Gini Impurity)</h2>
                 <p>CART 알고리즘에서 주로 사용하며, 계산이 엔트로피보다 빠릅니다. 데이터셋에서 임의로 두 개의 샘플을 뽑았을 때 서로 다른 클래스일 확률을 의미합니다.</p>
                 <div class="diagram-placeholder">
-                    
+
                 </div>
                 <div class="formula">
                     $$ G = 1 - \sum_{i=1}^{c} p_i^2 $$
@@ -107,12 +115,50 @@
             </section>
 
             <section id="sec8">
-                <h2>8. 가지치기 (Pruning)</h2>
-                <p>트리가 너무 깊어지면 학습 데이터만 완벽하게 외워버리는 <strong>과적합(Overfitting)</strong>이 발생합니다. 이를 막기 위해 트리의 성장을 제한하는 것을 가지치기라고 합니다.</p>
+                <h2>8. 과적합(Overfitting)과 가지치기(Pruning)</h2>
+                <h3>과적합(Overfitting)이란?</h3>
+                <p>머신러닝 모델을 만들 때 가장 경계해야 할 현상 중 하나가 바로 '과적합'입니다.
+                    과적합이란 모델이 학습 데이터(Training Data)를 과도하게 학습한 나머지,
+                    데이터에 포함된 <strong>노이즈(Noise)나 아주 사소한 특징, 혹은 이상치(Outlier)까지 모두 패턴으로 인식하고 암기해버린 상태</strong>를 말합니다.</p>
+                <div class="diagram-container">
+                    <figcaption>그림 2: 과적합된 모델(오른쪽)은 너무 복잡한 경계선을 가집니다.</figcaption>
+                </div>
+                <p>의사결정 나무는 태생적으로 과적합에 매우 취약한 알고리즘입니다.
+                    별다른 제약을 걸지 않으면, 나무는 순도(Purity)가 100%가 될 때까지,
+                    즉 모든 학습 데이터를 완벽하게 구분해낼 때까지 끝없이 가지를 뻗어나갑니다.
+                    결과적으로 트리의 깊이는 매우 깊어지고 구조는 지나치게 복잡해집니다.</p>
+
+                <p><strong>비유를 들어보겠습니다.</strong></p>
+                <blockquote>
+                    수학 시험을 준비하는 학생이 있습니다. 이 학생이 수학의 원리(일반적인 패턴)를 이해하려 하지 않고,
+                    문제집에 있는 모든 문제와 정답을 토씨 하나 안 틀리고 달달 외워버렸다고 가정해봅시다.
+                    이 학생은 문제집(학습 데이터) 시험을 보면 100점을 맞겠지만,
+                    숫자가 조금만 바뀐 실제 시험(테스트 데이터)에서는 0점을 맞게 될 것입니다.
+                    이것이 바로 과적합입니다. </blockquote>
+
+                <p>과적합된 모델은 <strong>'일반화(Generalization)' 능력이 떨어집니다.</strong>
+                    우리가 머신러닝을 하는 이유는 과거의 데이터를 외우기 위함이 아니라,
+                    미래의 새로운 데이터를 예측하기 위함입니다.
+                    따라서 학습 데이터에서의 정확도가 조금 떨어지더라도,
+                    새로운 데이터에서 잘 동작하는 단순하고 강건한 모델을 만드는 것이 중요합니다.</p>
+
+                <h3>해결책: 가지치기 (Pruning)</h3>
+                <p>
+                    이러한 과적합을 막기 위해 나무가 끝까지 자라지 못하도록 막거나,
+                    이미 자란 가지를 잘라내는 기법을 <strong>가지치기</strong>라고 합니다.
+                </p>
                 <ul>
-                    <li><strong>Pre-pruning:</strong> 트리를 만들 때 깊이(max_depth)나 노드 수에 제한을 둡니다.</li>
-                    <li><strong>Post-pruning:</strong> 트리를 완성한 후 중요하지 않은 가지를 잘라냅니다.</li>
+                    <li><strong>사전 가지치기 (Pre-pruning):</strong> 트리를 생성하는 과정에서 성장을 미리 중단시킵니다.
+                        <ul>
+                            <li>트리의 최대 깊이(Max Depth) 제한</li>
+                            <li>리프 노드에 있어야 할 최소 샘플 수 제한</li>
+                            <li>불순도 감소량이 일정 수준 미만이면 분기 중지</li>
+                        </ul>
+                    </li>
+                    <li><strong>사후 가지치기 (Post-pruning):</strong> 트리를 일단 완성한 후, 정보 이득이 적거나 중요도가 낮은 가지를 역으로 제거하여 일반화 성능을
+                        높입니다.</li>
                 </ul>
+
             </section>
 
             <section id="sec9">
@@ -169,4 +215,5 @@ print(f"정확도: {score:.4f}")
     </footer>
 
 </body>
+
 </html>
