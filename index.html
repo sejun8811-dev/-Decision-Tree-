@@ -51,16 +51,19 @@
                 </ul>
             </section>
 
-            <section id="sec3">
+            <section id="sec3">    
                 <h2>3. 기본 구조 (Structure)</h2>
-                <p>나무가 뒤집혀 있는 모양으로, 뿌리(Root)에서 시작해 잎(Leaf)으로 끝납니다.</p>
-                <div class="diagram-placeholder">
-                   
-                </div>
+                <p>나무가 뒤집혀 있는 모양으로, 뿌리(Root)에서 시작해 잎(Leaf)으로 끝납니다. 각 부분의 역할은 다음과 같습니다.</p>
+
+                <figure class="diagram-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Decision_Tree.jpg/640px-Decision_Tree.jpg" alt="의사결정 나무의 기본 구조: 루트 노드, 내부 노드, 리프 노드">
+                    <figcaption>그림 1: 의사결정 나무의 기본 구조 (출처: Wikimedia Commons)</figcaption>
+                </figure>
+                
                 <ul>
-                    <li><strong>Root Node:</strong> 트리의 시작점. 모든 데이터를 포함합니다.</li>
-                    <li><strong>Internal Node:</strong> 조건에 따라 데이터가 분기되는 지점입니다.</li>
-                    <li><strong>Leaf Node:</strong> 더 이상 분할되지 않는 끝점. 최종 예측값(클래스)을 가집니다.</li>
+                    <li><strong>뿌리 노드 (Root Node):</strong> 트리의 시작점입니다. 가장 첫 번째 질문이 위치하며, 입력된 모든 데이터를 포함하고 있습니다.</li>
+                    <li><strong>내부 노드 (Internal Node):</strong> 조건에 따라 데이터가 분기(Split)되는 지점입니다. '스무고개'의 질문에 해당하며, 각 분기점마다 특정 기준(특성)에 따라 데이터가 나뉩니다.</li>
+                    <li><strong>잎 노드 (Leaf Node):</strong> 더 이상 분할되지 않는 트리의 끝점입니다. 최종적인 예측값(클래스 레이블 또는 회귀 값)을 결정하는 곳입니다.</li>
                 </ul>
             </section>
 
